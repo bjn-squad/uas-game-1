@@ -10,7 +10,7 @@ public class YellowDiamond : MonoBehaviour
     public AudioSource collectSound;
 
     void OnTriggerEnter(){
-        scoreBox.GetComponent<Text>().text = "1000";
+        GlobalScore.currentScore += 100;
         collectSound.Play();
         Destroy(gameObject);
     }
