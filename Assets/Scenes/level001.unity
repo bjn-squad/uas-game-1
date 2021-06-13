@@ -2397,6 +2397,9 @@ MonoBehaviour:
   timeLeft: {fileID: 733272265}
   theScore: {fileID: 425384004}
   finalScore: {fileID: 336310762}
+  timeCalc: 0
+  scoreCalc: 0
+  totalScoreCalc: 0
 --- !u!1 &487209298
 GameObject:
   m_ObjectHideFlags: 0

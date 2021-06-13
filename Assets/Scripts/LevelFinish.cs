@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelFinish : MonoBehaviour
 {
@@ -10,8 +11,16 @@ public class LevelFinish : MonoBehaviour
     public GameObject timeLeft;
     public GameObject theScore;
     public GameObject finalScore;
+    public int timeCalc;
+    public int scoreCalc;
+    public int totalScoreCalc;
 
     void OnTriggerEnter(){
+        timeCalc = GlobalTimer.extendScore * 10;
+        timeLeft.GetComponent<Text>().text = "Time Left : " +GlobalTimer.extendScore+" x 10";
+        theScore.GetComponent<Text>().text = "Score : " +GlobalScore.currentScore;
+        totalScoreCalc = GlobalScore.currentScore + timeCalc;
+        finalScore.GetComponent<Text>().text = "Final Score : "+totalScoreCalc; 
         levelMusic.SetActive(false);
         levelTimer.SetActive(false);
         levelComplete.Play();
