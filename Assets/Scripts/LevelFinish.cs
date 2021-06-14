@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelFinish : MonoBehaviour
 {
@@ -14,8 +15,13 @@ public class LevelFinish : MonoBehaviour
     public int timeCalc;
     public int scoreCalc;
     public int totalScoreCalc;
+    public GameObject lockPosition;
+    public GameObject fadeOut;
 
     void OnTriggerEnter(){
+        GetComponent<BoxCollider>().enabled = false;
+        lockPosition.SetActive(true);
+        lockPosition.transform.parent = null;
         timeCalc = GlobalTimer.extendScore * 10;
         timeLeft.GetComponent<Text>().text = "Time Left : " +GlobalTimer.extendScore+" x 10";
         theScore.GetComponent<Text>().text = "Score : " +GlobalScore.currentScore;
@@ -33,6 +39,10 @@ public class LevelFinish : MonoBehaviour
         theScore.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         finalScore.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2);
+        fadeOut.SetActive(true);
+        yield return new WaitForSeconds(1);
+        GlobalScore.currentScore = 0;
+        SceneManager.LoadScene(RedirectToLevel.nextLevel);
     }
 }

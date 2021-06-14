@@ -5,11 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class RedirectToLevel : MonoBehaviour
 {
-    public static int redirectToLevel = 1;
+    public static int redirectToLevel;
+    public static int nextLevel;
 
     void Update()
     {
-        if(redirectToLevel == 1){
+        if(redirectToLevel == 2){
             SceneManager.LoadScene(redirectToLevel);
         }    
     }

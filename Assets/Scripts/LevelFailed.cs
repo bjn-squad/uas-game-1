@@ -19,6 +19,7 @@ public class LevelFailed : MonoBehaviour
         yield return new WaitForSeconds(2);
         fadeOut.SetActive(true);
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene(0);
+        GlobalScore.currentScore = 0;
+        SceneManager.LoadScene(RedirectToLevel.redirectToLevel);
     }
 }
